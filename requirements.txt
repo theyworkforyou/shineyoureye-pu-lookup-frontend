@@ -1,0 +1,7 @@
+beautifulsoup4==4.5.3
+everypolitician==0.0.13
+everypolitician-popolo==0.0.11
+Flask==0.12
+html5lib==0.999999999
+requests==2.13.0
+six==1.10.0

@@ -1,0 +1,30 @@
+{% if area %}
+  <p>The best match is the {{ area.type_name }} &ldquo;{{
+  area.name }}&rdquo; with polling unit number &lsquo;{{
+  area.codes.poll_unit }}&rsquo;</p>
+
+  <h3>Overlapping Federal Constituencies</h3>
+
+  {% for federal_constituency in federal_constituencies %}
+  <li>{{ federal_constituency.name }}:
+    <ul>
+      {% for membership in federal_constituency.memberships %}
+      <li>Representative is: <a href="{{ real_site_url }}/person/{{ membership.person.id }}">{{ membership.person.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+
+  {% for senatorial_district in senatorial_districts %}
+  <li>{{ senatorial_district.name }}:
+    <ul>
+      {% for membership in senatorial_district.memberships %}
+      <li>Senator is: <a href="{{ real_site_url }}/person/{{ membership.person.id }}">{{ membership.person.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+
+{% else %}
+  <p>No results for '{{ query }}'</p>
+{% endif %}
