@@ -4,7 +4,7 @@ import json
 
 from flask import Flask, render_template_string, request
 import requests
-from six.moves.urllib_parse import quote
+from six.moves.urllib_parse import quote, urljoin
 
 from fetch_template import get_template_from
 from areas import build_area_lookup
@@ -14,8 +14,7 @@ app = Flask(__name__)
 
 REAL_SITE_URL = 'http://sinatra.staging.shineyoureye.org'
 
-# TEMPLATE_URL = urljoin(REAL_SITE_URL, '/jinja2-template.html')
-TEMPLATE_URL = 'http://localhost:9292/jinja2-template.html'
+TEMPLATE_URL = urljoin(REAL_SITE_URL, '/jinja2-template.html')
 
 rewritten_layout_template = get_template_from(TEMPLATE_URL, REAL_SITE_URL)
 
