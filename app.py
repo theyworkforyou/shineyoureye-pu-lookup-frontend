@@ -62,7 +62,6 @@ def lookup():
     response = requests.get(
         'https://pu-lookup.herokuapp.com/?lookup={0}'.format(quote(query))
     ).json()
-    print(response)
     if 'error' in response:
         return render_template_string(
             rewritten_layout_template,
