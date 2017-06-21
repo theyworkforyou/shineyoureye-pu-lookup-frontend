@@ -43,6 +43,7 @@ def get_template_from(template_url, real_site_url):
 
     for element_name, attribute in attributes_to_rewrite:
         for e in soup.find_all(element_name):
-            e[attribute] = rewrite_url(e[attribute], real_site_url)
+            if e.has_attr(attribute):
+                e[attribute] = rewrite_url(e[attribute], real_site_url)
 
     return soup.prettify()
