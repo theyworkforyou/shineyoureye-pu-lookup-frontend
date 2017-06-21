@@ -66,7 +66,7 @@ def lookup():
         return render_template_string(
             rewritten_layout_template,
             content='error.html',
-            error=response
+            error=response['error']
         )
 
 
