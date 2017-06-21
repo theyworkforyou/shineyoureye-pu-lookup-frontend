@@ -8,8 +8,8 @@
   {% for federal_constituency in federal_constituencies %}
   <li>{{ federal_constituency.name }}:
     <ul>
-      {% for membership in federal_constituency.memberships %}
-      <li>Representative is: <a href="{{ real_site_url }}/person/{{ membership.person.id }}">{{ membership.person.name }}</a></li>
+      {% for membership, slug in federal_constituency.memberships %}
+      <li>Representative is: <a href="{{ real_site_url }}/person/{{ slug }}">{{ membership.person.name }}</a></li>
       {% endfor %}
     </ul>
   </li>
@@ -18,8 +18,8 @@
   {% for senatorial_district in senatorial_districts %}
   <li>{{ senatorial_district.name }}:
     <ul>
-      {% for membership in senatorial_district.memberships %}
-      <li>Senator is: <a href="{{ real_site_url }}/person/{{ membership.person.id }}">{{ membership.person.name }}</a></li>
+      {% for membership, slug in senatorial_district.memberships %}
+      <li>Senator is: <a href="{{ real_site_url }}/person/{{ slug }}">{{ membership.person.name }}</a></li>
       {% endfor %}
     </ul>
   </li>

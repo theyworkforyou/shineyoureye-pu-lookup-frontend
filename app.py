@@ -8,7 +8,7 @@ from six.moves.urllib_parse import quote, urljoin
 
 from fetch_template import get_template_from
 from areas import build_area_lookup
-from people import build_rep_lookup
+from people import build_rep_lookup, get_id_to_slug_mapping
 
 app = Flask(__name__)
 
@@ -20,6 +20,16 @@ rewritten_layout_template = get_template_from(TEMPLATE_URL, REAL_SITE_URL)
 
 area_lookup = build_area_lookup()
 rep_lookup = build_rep_lookup()
+person_id_to_slug = get_id_to_slug_mapping(REAL_SITE_URL)
+
+
+def membership_and_slug_tuple(membership):
+    if membership:
+        return (
+            membership,
+            person_id_to_slug[membership.person.id]
+        )
+    return (None, None)
 
 
 def get_memberships(mapit_area_id, mapit_type):
@@ -27,7 +37,7 @@ def get_memberships(mapit_area_id, mapit_type):
     if not ep_area_ids:
         return []
     return [
-        rep_lookup.get(ep_area_id)
+        membership_and_slug_tuple(rep_lookup.get(ep_area_id))
         for ep_area_id in ep_area_ids
         if ep_area_id in rep_lookup]
 
