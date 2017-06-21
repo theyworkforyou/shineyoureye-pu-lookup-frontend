@@ -12,7 +12,7 @@ from people import build_rep_lookup
 
 app = Flask(__name__)
 
-REAL_SITE_URL = 'http://sinatra.staging.shineyoureye.org'
+REAL_SITE_URL = 'http://www.shineyoureye.org'
 
 TEMPLATE_URL = urljoin(REAL_SITE_URL, '/jinja2-template.html')
 
