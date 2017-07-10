@@ -21,6 +21,7 @@ def get_template_from(template_url, real_site_url):
     # Get a URL from the real site which is designed to be easily
     # tranformable into a working Jinja2 template:
 
+    print("Getting the template from: {0}".format(template_url))
     response = requests.get(template_url)
 
     # Strip out stray ERB tags:

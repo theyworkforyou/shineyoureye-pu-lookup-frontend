@@ -16,6 +16,7 @@ def build_area_lookup():
         mapping_url = urljoin(
             RAW_GH_URL,
             'mapit/mapit_to_ep_area_ids_mapping_{0}.csv'.format(area_type))
+        print("Loading the area mapping {0}".format(mapping_url))
         csv_data = requests.get(mapping_url).text
         reader = csv.reader(StringIO(csv_data.encode('utf-8')))
         for mapit_id, ep_area_id in reader:

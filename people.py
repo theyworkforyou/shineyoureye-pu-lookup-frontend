@@ -10,6 +10,7 @@ from six.moves.urllib_parse import urljoin
 
 def get_id_to_slug_mapping(real_site_url):
     url = urljoin(real_site_url, '/ids-and-slugs.csv')
+    print("Getting the slug <-> id mapping from: {0}".format(url))
     r = requests.get(url)
     reader = csv.DictReader(r.iter_lines())
     return {
