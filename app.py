@@ -1,7 +1,5 @@
 from __future__ import unicode_literals, print_function, absolute_import
 
-import json
-
 from flask import Flask, render_template_string, request
 import requests
 from six.moves.urllib_parse import quote, urljoin
@@ -78,9 +76,6 @@ def lookup():
             content='error.html',
             error=response['error']
         )
-
-
-    print("got response:", json.dumps(response, indent=4))
     return render_template_string(
         rewritten_layout_template,
         content='results.html',
