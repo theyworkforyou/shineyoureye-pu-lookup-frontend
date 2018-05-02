@@ -14,6 +14,9 @@ REAL_SITE_URL = 'http://www.shineyoureye.org'
 
 TEMPLATE_URL = urljoin(REAL_SITE_URL, '/jinja2-template.html')
 
+# LOOKUP_URL_FORMAT = 'https://pu-lookup.herokuapp.com/?lookup={0}'
+LOOKUP_URL_FORMAT = 'https://hfwi7tdz3e.execute-api.eu-west-2.amazonaws.com/dev?lookup={0}'
+
 rewritten_layout_template = get_template_from(TEMPLATE_URL, REAL_SITE_URL)
 
 area_lookup = build_area_lookup()
@@ -68,7 +71,7 @@ def lookup():
     query = request.form.get('pu-number')
     # Make a query to the PU lookup service:
     response = requests.get(
-        'https://pu-lookup.herokuapp.com/?lookup={0}'.format(quote(query))
+        LOOKUP_URL_FORMAT.format(quote(query))
     ).json()
     if 'error' in response:
         return render_template_string(
