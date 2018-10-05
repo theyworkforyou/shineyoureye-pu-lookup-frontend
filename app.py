@@ -12,7 +12,7 @@ from people import build_rep_lookup, get_id_to_slug_mapping
 
 app = Flask(__name__)
 
-REAL_SITE_URL = 'http://www.shineyoureye.org'
+REAL_SITE_URL = 'https://www.shineyoureye.org'
 
 TEMPLATE_URL = urljoin(REAL_SITE_URL, '/jinja2-template.html')
 
